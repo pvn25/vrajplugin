@@ -154,7 +154,7 @@ public class GHFolderToTSV {
 							startingIndex = endingIndex+1;
 						}/*for.*/																											test = 13;
 						if (numberOfFieldsHaveBeenReadInThisRecord != Constants.DUMP_TABLES_AND_THEIR_FIELDS1.get(tableName+Constants.SEPARATOR_FOR_TABLE_AND_FIELD+"neededFields").size()){
-							System.out.println("error 4!!!!!!!!!!!!!!!!!! (in number of fields)");			result.errors++;			}/*if (numb....*/
+							/*System.out.println("error 4!!!!!!!!!!!!!!!!!! (in number of fields)");	*/		result.errors++;			}/*if (numb....*/
 						tabSeparatedRecord = MyUtils.removeExtraCharactersFromTheEndOfRecord(tabSeparatedRecord) + "\n";					test = 14;
 						writer.append(tabSeparatedRecord);
 						recordsRead++;
