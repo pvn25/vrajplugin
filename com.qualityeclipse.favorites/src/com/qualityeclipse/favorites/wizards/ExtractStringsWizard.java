@@ -20,15 +20,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
 
 public class ExtractStringsWizard extends Wizard{
 	private IStructuredSelection initialSelection;
 	protected SelectFilesWizardPage one;
 	  protected SelectStringsWizardPage two;
+	  
 	 //public static Vector<String>[] strarrlist = (Vector<String>[]) new Vector[3];
 	  static public Vector st0 =  new Vector(10); static public Vector st1 =  new Vector(10);
 	  static public Vector st2 =  new Vector(10);static public Vector st3 =  new Vector(10);
@@ -67,6 +70,17 @@ public class ExtractStringsWizard extends Wizard{
 
 	  @Override
 	  public boolean performFinish() {
+		  JFrame frame = new JFrame();
+		  frame.add( new JLabel(" Outout" ), BorderLayout.CENTER );
+	        JTextArea ta = new JTextArea(25,50);
+	        CustomOutputStream taos = new CustomOutputStream( ta, 600 );
+	        PrintStream ps = new PrintStream( taos );
+	        System.setOut( ps );
+	        System.setErr( ps );
+	        frame.add( new JScrollPane( ta )  );
+
+	        frame.pack();
+	        frame.setVisible( true );
 
 		  
 	    // Print the result to the console
@@ -79,9 +93,7 @@ public class ExtractStringsWizard extends Wizard{
 		      for (int i = 0; i < items.length; ++i) {
 		        if (items[i].getChecked()){
 		        	//System.out.println(items[i].getText(1));
-		        	if(items[i].getText()=="SelectAll"){
-		                    two.checkboxTableViewer.getTable().selectAll();
-			        }else if(items[i].getText()=="commit_comments"){
+		        	if(items[i].getText()=="commit_comments"){
 		        	st0.add(items[i].getText(1));
 		        	flag[0] = true;
 		        	}else if(items[i].getText()=="commits"){
@@ -123,13 +135,7 @@ public class ExtractStringsWizard extends Wizard{
 		        	st16.add(items[i].getText(1));flag[16] = true;
 		        	}
 		        }
-		        JFrame frame = new JFrame();
-		        frame.add( new JLabel(" Outout" ), BorderLayout.NORTH );
-		        JTextArea ta = new JTextArea();
-		        TextAreaOutputStream taos = new TextAreaOutputStream( ta, 60 );
-		        PrintStream ps = new PrintStream( taos );
-		        System.setOut( ps );
-		        System.setErr( ps );
+		        
 		      }
 		      
 		   // final ExtractedString[] extracted = two.getSelection();
@@ -147,8 +153,8 @@ public class ExtractStringsWizard extends Wizard{
 	    for (int i = 0; i < extracted.length; i++) {
 	    	System.out.println(extracted[i]);
 	    }*/
-		
-	    return true;
+				frame.dispose();
+			    return true;
 	  }
 
 	public IPath getSourceLocation() {

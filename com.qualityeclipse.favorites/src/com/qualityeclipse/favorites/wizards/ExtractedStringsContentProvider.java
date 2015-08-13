@@ -11,7 +11,6 @@ public class ExtractedStringsContentProvider
    // dummy data
    private static final Object[] items =
          {
-	   		   new ExtractedString("SelectAll", "Selects All the fields"),
 	   		   new ExtractedString("commit_comments", "id"), new ExtractedString("commit_comments", "commit_id"),
                new ExtractedString("commit_comments", "user_id"), new ExtractedString("commit_comments", "line"),
                new ExtractedString("commit_comments", "position"), new ExtractedString("commit_comments", "comment_id"),
