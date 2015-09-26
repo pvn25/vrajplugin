@@ -19,3 +19,5 @@ may take several days for a regular machine).
 
 (step 3) Then, in order to facilitate the tracking of the progress, the third window shows the progress and summary
 of the extracted data (Figure).
+
+For more detail information you can go to: https://www.youtube.com/watch?v=XBZbrG5oUHQ
