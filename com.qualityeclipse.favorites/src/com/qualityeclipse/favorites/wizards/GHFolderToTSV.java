@@ -75,7 +75,7 @@ public class GHFolderToTSV {
 			int showProgressInterval){
 		FileConversionResult result = new FileConversionResult();
 		String outputPathAndFileName = outputPath + "\\" + inputFile.getName();
-		outputPathAndFileName = MyUtils.removeFromEnd(outputPathAndFileName, 3) + "tsv";
+		outputPathAndFileName = MyUtils.removeFromEnd(outputPathAndFileName, 3) + Constants.csv_or_tsv;
 		String tableName = inputFile.getName().substring(0, inputFile.getName().indexOf(".sql"));
 		System.out.println(fileCounter + ") \"" + tableName + "\"; " + inputFile.getPath() + "\"\t ----> \"" + outputPathAndFileName + "\"");
 		String tabSeparatedRecord = "", s = ""; 

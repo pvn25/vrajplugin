@@ -1,5 +1,6 @@
 package com.qualityeclipse.favorites.wizards;
 
+import java.awt.TextArea;
 import java.util.Iterator;
 
 import org.eclipse.core.resources.IFile;
@@ -28,15 +29,17 @@ import org.eclipse.swt.widgets.Text;
 public class SelectFilesWizardPage extends WizardPage{
 	private Text sourceFileField;
 	   private Text destinationFileField;
+	   public Text newFileField;
 	   private IPath initialSourcePath;
 	   static int flag = 0;
 	   public static String holder1="";
 	   public static String holder2="";
+	   TextArea ta2;
 	   
 	public SelectFilesWizardPage() {
 	    super("First Page");
 	    setTitle("First Page");
-	    setDescription("Fake Wizard: First page");
+	    setDescription("Make Your Selection");
 	  }
 
 	public void createControl(Composite parent) {
@@ -51,7 +54,7 @@ public class SelectFilesWizardPage extends WizardPage{
 	      gridData.horizontalSpan = 3;
 	      label.setLayoutData(gridData);
 	      label.setText("Select the source folder "
-	            + "from which csvs will be extracted.");
+	            + "from which sqls will be extracted.");
 
 	      final Label label_1 = new Label(container, SWT.NONE);
 	      final GridData gridData_1 = new GridData(GridData.HORIZONTAL_ALIGN_END);
@@ -79,7 +82,7 @@ public class SelectFilesWizardPage extends WizardPage{
 	      gridData_3.horizontalSpan = 3;
 	      label_3.setLayoutData(gridData_3);
 	      label_3.setText("Select the Destination Folder "
-	            + "into which TSVs will be placed.");
+	            + "into which parsed files will be placed.");
 
 	      final Label label_4 = new Label(container, SWT.NONE);
 	      final GridData gridData_4 = new GridData();
@@ -98,6 +101,28 @@ public class SelectFilesWizardPage extends WizardPage{
 	         }
 	      });
 	      button_1.setText("Browse...");
+	      /*
+	      final Label label_23 = new Label(container, SWT.NONE);
+	      final GridData gridData_23 = new GridData();
+	      gridData_23.horizontalSpan = 3;
+	      label_23.setLayoutData(gridData_2);
+	      
+	      final Label label_33 = new Label(container, SWT.NONE);
+	      final GridData gridData_33 = new GridData();
+	      gridData_33.horizontalSpan = 3;
+	      label_33.setLayoutData(gridData_33);
+	      label_33.setText("Input the Regular Expression");
+
+	      final Label label_44 = new Label(container, SWT.NONE);
+	      final GridData gridData_44 = new GridData();
+	      gridData_44.horizontalIndent = 20;
+	      label_44.setLayoutData(gridData_44);
+	      label_44.setText("Regular Expression:");
+	      
+	      newFileField = new Text(container, SWT.BORDER);	      
+	      newFileField.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+	      */
+	      
 	      initContents();
 	      setPageComplete(true);
 	}

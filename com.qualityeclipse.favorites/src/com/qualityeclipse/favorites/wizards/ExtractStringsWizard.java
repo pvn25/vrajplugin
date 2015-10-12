@@ -10,6 +10,7 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.swt.SWTException;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
@@ -56,7 +57,7 @@ public class ExtractStringsWizard extends Wizard{
 
 	  @Override
 	  public String getWindowTitle() {
-	    return "Export My Data";
+	    return "Github's Big Data Adaptor";
 	  }
 
 	  @Override
@@ -86,6 +87,9 @@ public class ExtractStringsWizard extends Wizard{
 	    // Print the result to the console
 		  one = new SelectFilesWizardPage();
 		    two = new SelectStringsWizardPage();
+		    //System.out.println(one.newFileField.getText());
+		    //System.out.println(two.no.getText());
+		    
 		    v.add("body");
 		    //strarrlist = new ArrayList<ArrayList<String>>;
 		    final TableItem [] items = two.checkboxTableViewer.getTable().getItems();//System.out.println(items.length);
@@ -154,6 +158,8 @@ public class ExtractStringsWizard extends Wizard{
 	    	System.out.println(extracted[i]);
 	    }*/
 				frame.dispose();
+			
+		
 			    return true;
 	  }
 

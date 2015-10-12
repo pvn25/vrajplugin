@@ -81,14 +81,14 @@ public final class Constants {
     }};
   public static final HashMap <String,Vector> DUMP_TABLES_AND_THEIR_FIELDS1 = new HashMap<String,Vector>();
   
-    public static final String allValidCharactersInGH_Descriptions_ForRegEx = "a-zA-Z0-9\\.\\#\\+\\-\\_\\@\\(\\)\\[\\]\\{\\}\\*\\!\\,\\:\\;";  
+    public static String allValidCharactersInGH_Descriptions_ForRegEx = "a-zA-Z0-9\\.\\#\\+\\-\\_\\@\\(\\)\\[\\]\\{\\}\\*\\!\\,\\:\\;";  
 	public static final String SEPARATOR_FOR_TABLE_AND_FIELD = ":";
-	public static final String SEPARATOR_FOR_FIELDS_IN_TSV_FILE = "\t";
+	public static String SEPARATOR_FOR_FIELDS_IN_TSV_FILE = "\t";
 	public static final DecimalFormat integerFormatter = new DecimalFormat("###,###");
 	public static final DecimalFormat floatFormatter = new DecimalFormat("###,###.#");
 	public static final DecimalFormat highPrecisionFloatFormatter = new DecimalFormat("###,###.######");
 	public static final int NUMBER_OF_TAB_CHARACTERS = 4;
-
+    public static String csv_or_tsv;
 	public static final String ALL = "ALL";
 	
 	public static final long THIS_IS_A_TEST = 10000;

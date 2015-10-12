@@ -2,25 +2,35 @@ package com.qualityeclipse.favorites.wizards;
 
 import java.awt.Checkbox;
 import java.awt.Font;
-
+import javax.swing.ButtonGroup;
 import javax.swing.JTable;
-
+import java.awt.*;
+import java.awt.event.*;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Text;
+import com.qualityeclipse.favorites.wizards.Utils.Constants;
 
 /**
  * The second page of the wizard contains a checkbox list of key/value pairs
@@ -38,11 +48,13 @@ public class SelectStringsWizardPage extends WizardPage
    Color red = display.getSystemColor(SWT.COLOR_RED);
    Color cc = new Color(Display.getCurrent(),145,193,230);
    Color cc1 = new Color(Display.getCurrent(),230,176,145);
+   public Button yes,no;
+   public Text newFile;
    
    public SelectStringsWizardPage() {
       super("selectStrings");
-      setTitle("Extract Strings");
-      setDescription("Select the strings to be extracted");
+      setTitle("Export My Data");
+      setDescription("Select the table fields to be exported");
    }
 
    /**
@@ -63,13 +75,13 @@ public class SelectStringsWizardPage extends WizardPage
       checkboxTableViewer.setLabelProvider(new ExtractedStringsLabelProvider());
       final Table table = checkboxTableViewer.getTable();
       final FormData formData = new FormData();
-      formData.bottom = new FormAttachment(100, 0);
+      formData.bottom = new FormAttachment(90, 0);
       formData.right = new FormAttachment(100, 0);
       formData.top = new FormAttachment(0, 0);
       formData.left = new FormAttachment(0, 0);
       table.setLayoutData(formData);
       table.setHeaderVisible(true);	
-
+      
       final TableColumn tableColumn = new TableColumn(table, SWT.NONE);
       tableColumn.setWidth(200);
       tableColumn.setText("Table");
@@ -153,6 +165,62 @@ public class SelectStringsWizardPage extends WizardPage
 	    		  itums[i].setBackground(cc);
 	    	  }
 	      }
+	      SelectionListener selectionListener = new SelectionAdapter () {
+	          public void widgetSelected(SelectionEvent event) {
+	             Button button = ((Button) event.widget);
+	             if(button.getSelection()){
+	            	 if(button.getText()=="TSV"){
+	            		 Constants.SEPARATOR_FOR_FIELDS_IN_TSV_FILE = "\t";
+	            		 Constants.csv_or_tsv = "tsv";
+	            	 }else{
+	            		 Constants.SEPARATOR_FOR_FIELDS_IN_TSV_FILE = ",";
+	            		 Constants.csv_or_tsv = "csv";
+	            	 }
+	             }
+	             //System.out.println(" selected = " + button.getSelection());
+	          };
+	       };
+	       
+	      Label dog = new Label(container, SWT.NONE);
+	      dog.setText("Export as:");
+	      FormData datta = new FormData();
+	      datta.top = new FormAttachment(table,10);
+	      datta.left = new FormAttachment(0,0);
+	      dog.setLayoutData(datta);
+	      yes = new Button(container, SWT.RADIO);
+	      FormData formData1 = new FormData();
+	      formData1.top = new FormAttachment(table,10);
+	      formData1.left = new FormAttachment(15,0);
+	      yes.setLayoutData(formData1);
+	      yes.setText("CSV");
+	      yes.addSelectionListener(selectionListener);
+	      
+	      no = new Button(container, SWT.RADIO);
+	      FormData formData2 = new FormData();
+	      formData2.top = new FormAttachment(table,10);
+	      formData2.left = new FormAttachment(yes,40);
+	      no.setLayoutData(formData2);
+	      no.setText("TSV");
+	      no.addSelectionListener(selectionListener);
+	      
+	      Label dogName = new Label(container, SWT.NONE);
+	      dogName.setText("Valid Characters:");
+	      newFile = new Text(container, SWT.BORDER | SWT.SINGLE);	
+	      
+	      FormData data = new FormData();
+	      data.left = new FormAttachment(0,0);
+		  data.right = new FormAttachment(newFile,-5);
+		  data.top = new FormAttachment(yes,10);
+		  data.bottom = new FormAttachment(100,0);
+		  dogName.setLayoutData(data);
+	      
+		  FormData formData3 = new FormData();
+	      formData3.bottom = new FormAttachment(100,0);
+	      formData3.left = new FormAttachment(dogName,10);
+	      formData3.right = new FormAttachment(60,0);
+	      formData3.top = new FormAttachment(yes,10);
+	      newFile.setLayoutData(formData3);
+	      //Constants.allValidCharactersInGH_Descriptions_ForRegEx = newFile.getText();
    }
    public void setVisible(boolean visible) {
 	      super.setVisible(visible);
