@@ -1,0 +1,15 @@
+Follow these steps:
+
+(1) Go to : http://archive.eclipse.org/technology/epp/downloads/release/helios/SR2/eclipse-rcp-helios-SR2-win32-x86_64.zip
+This is Helios for RCP and RAP developers.
+(2) From this repository download the "com.qualityeclipse.favorites_1.0.0" plugin jar file.
+(3) Put the downloaded jar file in the plugins, features and dropins folder of the downloaded eclipse.This should work for most of 
+the systems.
+(4) Start Eclipse using the command line with command: "eclipse.exe -clear -cp"
+(5) If the menu does not appear, then close the eclipse and copy the contents of "plugins" and "features" folder (downloaded from this repository) to 
+your plugins and features folder. If the prompt notifies some of the files are already in your original location then skip those files but do not replace
+or merge them.
+(6) Again do the step (4)
+(7) This should solve the problem,if it does not then you need to make a folder following this exact path:"C:/Big_Data_Adaptor/images" and
+put the two images inside this folder. There is an issue with bundling of images.
+(8) Again do the step (4).
