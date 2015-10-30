@@ -1,1 +1,0 @@
-INDEX VERSION 1.126+C:\Users\Vraj\workspacehelios64\com.qualityeclipse.favorites\.metadata\.plugins\org.eclipse.jdt.core
