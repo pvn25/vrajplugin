@@ -10,6 +10,3 @@ the systems.
 your plugins and features folder. If the prompt notifies some of the files are already in your original location then skip those files but do not replace
 or merge them.
 (6) Again do the step (4)
-(7) This should solve the problem,if it does not then you need to make a folder following this exact path:"C:/Big_Data_Adaptor/images" and
-put the two images inside this folder. There is an issue with bundling of images.
-(8) Again do the step (4).
